@@ -1,8 +1,8 @@
 package dal
 
 import (
-	"github.coom/xmhu2001/gomall/demo/demo_proto/biz/dal/mysql"
-	"github.coom/xmhu2001/gomall/demo/demo_proto/biz/dal/redis"
+	"github.com/xmhu2001/gomall/demo/demo_proto/biz/dal/mysql"
+	"github.com/xmhu2001/gomall/demo/demo_proto/biz/dal/redis"
 )
 
 func Init() {

@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	pbapi "github.coom/xmhu2001/gomall/demo/demo_proto/kitex_gen/pbapi"
+	pbapi "github.com/xmhu2001/gomall/demo/demo_proto/kitex_gen/pbapi"
 )
 
 type EchoService struct {
