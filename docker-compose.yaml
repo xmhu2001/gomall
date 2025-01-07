@@ -11,6 +11,12 @@ services:
       - ETCD_LISTEN_PEER_URLS=http://0.0.0.0:2380
       - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
       - ETCD_NAME=etcd-node
+  mysql:
+    image: "mysql:latest"
+    ports:
+      - 3305:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
 
 networks:
   etcd-net:

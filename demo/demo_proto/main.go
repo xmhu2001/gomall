@@ -4,18 +4,25 @@ import (
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/cloudwego/kitex/pkg/rpcinfo"
 	"github.com/cloudwego/kitex/server"
+	"github.com/joho/godotenv"
 	etcd "github.com/kitex-contrib/registry-etcd"
+	"github.com/xmhu2001/gomall/demo/demo_proto/biz/dal"
 	"github.com/xmhu2001/gomall/demo/demo_proto/kitex_gen/pbapi/echo"
 	"log"
 	"net"
 )
 
 func main() {
+	err := godotenv.Load("../../.env")
+	if err != nil {
+		panic("Error loading .env file")
+	}
+	dal.Init()
 	opts := kitexInit()
 
 	svr := echo.NewServer(new(EchoImpl), opts...)
 
-	err := svr.Run()
+	err = svr.Run()
 	if err != nil {
 		klog.Error(err.Error())
 	}
