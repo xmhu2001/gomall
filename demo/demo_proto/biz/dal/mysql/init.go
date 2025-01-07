@@ -2,6 +2,7 @@ package mysql
 
 import (
 	"fmt"
+	"github.com/xmhu2001/gomall/demo/demo_proto/biz/model"
 	"github.com/xmhu2001/gomall/demo/demo_proto/conf"
 	"os"
 
@@ -26,16 +27,8 @@ func Init() {
 	if err != nil {
 		panic(err)
 	}
-
-	type Version struct {
-		Version string
-	}
-	var v Version
-
-	err = DB.Raw("select version() as version").Scan(&v).Error
-
+	err := DB.AutoMigrate(&model.User{})
 	if err != nil {
-		panic(err)
+		return
 	}
-	fmt.Printf("%#v\n", v)
 }

@@ -17,7 +17,5 @@ services:
       - 3305:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demo_proto
 
-networks:
-  etcd-net:
-    driver: bridge
