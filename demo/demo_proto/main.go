@@ -8,6 +8,7 @@ import (
 	etcd "github.com/kitex-contrib/registry-etcd"
 	"github.com/xmhu2001/gomall/demo/demo_proto/biz/dal"
 	"github.com/xmhu2001/gomall/demo/demo_proto/kitex_gen/pbapi/echo"
+	"github.com/xmhu2001/gomall/demo/demo_proto/middleware"
 	"log"
 	"net"
 )
@@ -34,7 +35,7 @@ func kitexInit() (opts []server.Option) {
 	if err != nil {
 		panic(err)
 	}
-	opts = append(opts, server.WithServiceAddr(addr))
+	opts = append(opts, server.WithServiceAddr(addr), server.WithMiddleware(middleware.Middleware))
 
 	r, err := etcd.NewEtcdRegistry([]string{"127.0.0.1:2379"}) // r should not be reused.
 	if err != nil {
