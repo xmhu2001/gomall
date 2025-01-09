@@ -6,11 +6,8 @@ import (
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 	"github.com/xmhu2001/gomall/app/frontend/biz/service"
+	"github.com/xmhu2001/gomall/app/frontend/biz/utils"
 	auth "github.com/xmhu2001/gomall/app/frontend/hertz_gen/frontend/auth"
-	common "github.com/xmhu2001/gomall/app/frontend/hertz_gen/frontend/common"
-	"github.coom/xmhu2001/gomall/app/frontend/biz/service"
-	"github.coom/xmhu2001/gomall/app/frontend/biz/utils"
-	auth "github.coom/xmhu2001/gomall/app/frontend/hertz_gen/frontend/auth"
 )
 
 // Login .
