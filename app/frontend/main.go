@@ -17,8 +17,8 @@ import (
 	"github.com/hertz-contrib/logger/accesslog"
 	hertzlogrus "github.com/hertz-contrib/logger/logrus"
 	"github.com/hertz-contrib/pprof"
-	"github.coom/xmhu2001/gomall/app/frontend/biz/router"
-	"github.coom/xmhu2001/gomall/app/frontend/conf"
+	"github.com/xmhu2001/gomall/app/frontend/biz/router"
+	"github.com/xmhu2001/gomall/app/frontend/conf"
 	"go.uber.org/zap/zapcore"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
@@ -39,6 +39,10 @@ func main() {
 	router.GeneratedRegister(h)
 	h.LoadHTMLGlob("template/*")
 	h.Static("/static", "./")
+
+	h.GET("/sign-in", func(c context.Context, ctx *app.RequestContext) {
+		ctx.HTML(consts.StatusOK, "sign-in", utils.H{"Title": "Sign In"})
+	})
 	h.Spin()
 }
 

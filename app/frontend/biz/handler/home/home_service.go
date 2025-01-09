@@ -5,16 +5,16 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	"github.coom/xmhu2001/gomall/app/frontend/biz/service"
-	"github.coom/xmhu2001/gomall/app/frontend/biz/utils"
-	home "github.coom/xmhu2001/gomall/app/frontend/hertz_gen/frontend/home"
+	"github.com/xmhu2001/gomall/app/frontend/biz/service"
+	"github.com/xmhu2001/gomall/app/frontend/biz/utils"
+	common "github.com/xmhu2001/gomall/app/frontend/hertz_gen/frontend/common"
 )
 
 // Home .
 // @router / [GET]
 func Home(ctx context.Context, c *app.RequestContext) {
 	var err error
-	var req home.Empty
+	var req common.Empty
 	err = c.BindAndValidate(&req)
 	if err != nil {
 		utils.SendErrResponse(ctx, c, consts.StatusOK, err)

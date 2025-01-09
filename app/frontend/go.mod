@@ -1,4 +1,4 @@
-module github.coom/xmhu2001/gomall/app/frontend
+module github.com/xmhu2001/gomall/app/frontend
 
 go 1.23.3
 
