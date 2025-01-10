@@ -19,3 +19,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=demo_proto
 
+  redis:
+    image: "redis:latest"
+    ports:
+      - 6379:6379
