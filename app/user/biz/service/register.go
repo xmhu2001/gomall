@@ -2,8 +2,8 @@ package service
 
 import (
 	"context"
+	"errors"
 
-	"github.com/cloudwego/hertz/pkg/common/errors"
 	"github.com/xmhu2001/gomall/app/user/biz/dal/mysql"
 	"github.com/xmhu2001/gomall/app/user/biz/model"
 	user "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/user"
@@ -26,7 +26,7 @@ func (s *RegisterService) Run(req *user.RegisterReq) (resp *user.RegisterResp, e
 	}
 	bcryptPassword, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
 	if err != nil {
-		return nil, errors.New("password hash failed")
+		return nil, err
 	}
 	newUser := &model.User{
 		Email:          req.Email,
@@ -37,6 +37,6 @@ func (s *RegisterService) Run(req *user.RegisterReq) (resp *user.RegisterResp, e
 		return nil, err
 	}
 	return &user.RegisterResp{
-		UserId: newUser.ID,
+		UserId: int32(newUser.ID),
 	}, nil
 }
