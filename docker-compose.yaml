@@ -17,7 +17,7 @@ services:
       - 3305:3306
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=demo_proto
+      - MYSQL_DATABASE=user
 
   redis:
     image: "redis:latest"

@@ -19,8 +19,10 @@ func NewRegisterService(ctx context.Context) *RegisterService {
 
 // Run create note info
 func (s *RegisterService) Run(req *user.RegisterReq) (resp *user.RegisterResp, err error) {
-	// Finish your business logic.
 	// 参数校验
+	if req.Email == "" || req.Password == "" || req.PasswordConfirm == "" {
+		return nil, errors.New("email, password, password_confirm can not be empty")
+	}
 	if req.Password != req.PasswordConfirm {
 		return nil, errors.New("password and password_confirm not match")
 	}
