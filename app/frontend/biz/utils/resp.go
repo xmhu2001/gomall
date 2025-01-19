@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/xmhu2001/gomall/app/frontend/middleware"
+	frontendUtils "github.com/xmhu2001/gomall/app/frontend/utils"
 )
 
 // SendErrResponse  pack error response
@@ -20,7 +20,6 @@ func SendSuccessResponse(ctx context.Context, c *app.RequestContext, code int, d
 }
 
 func WarpResponse(ctx context.Context, c *app.RequestContext, content map[string]any) map[string]any {
-	userID := ctx.Value(middleware.SessionUserId)
-	content["user_id"] = userID
+	content["user_id"] = frontendUtils.GetUserIdFromCtx(ctx)
 	return content
 }
