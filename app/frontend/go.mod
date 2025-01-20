@@ -2,7 +2,10 @@ module github.com/xmhu2001/gomall/app/frontend
 
 go 1.23.3
 
-replace github.com/apache/thrift => github.com/apache/thrift v0.13.0
+replace (
+	github.com/apache/thrift => github.com/apache/thrift v0.13.0
+	github.com/xmhu2001/gomall/rpc_gen => ../../rpc_gen
+)
 
 require (
 	github.com/cloudwego/hertz v0.9.5
