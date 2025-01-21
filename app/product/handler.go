@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
-	product "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/xmhu2001/gomall/app/product/biz/service"
+	product "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product"
 )
 
 // ProductCatalogServiceImpl implements the last service interface defined in the IDL.
@@ -12,7 +14,7 @@ type ProductCatalogServiceImpl struct{}
 // ListProducts implements the ProductCatalogServiceImpl interface.
 func (s *ProductCatalogServiceImpl) ListProducts(ctx context.Context, req *product.ListProductsReq) (resp *product.ListProductsResp, err error) {
 	resp, err = service.NewListProductsService(ctx).Run(req)
-
+	klog.Infof("ListProducts: %v", resp)
 	return resp, err
 }
 

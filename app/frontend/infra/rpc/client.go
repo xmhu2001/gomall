@@ -7,7 +7,7 @@ import (
 	etcd "github.com/kitex-contrib/registry-etcd"
 	"github.com/xmhu2001/gomall/app/frontend/conf"
 	frontendUtils "github.com/xmhu2001/gomall/app/frontend/utils"
-	productcatalogservice "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
+	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/user/userservice"
 )
 

@@ -5,6 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/utils"
+	"github.com/cloudwego/kitex/pkg/klog"
 	common "github.com/xmhu2001/gomall/app/frontend/hertz_gen/frontend/common"
 	"github.com/xmhu2001/gomall/app/frontend/infra/rpc"
 	rpcproduct "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product"
@@ -24,6 +25,7 @@ func (h *HomeService) Run(req *common.Empty) (res map[string]any, err error) {
 	if err != nil {
 		return nil, err
 	}
+	klog.Infof("products: %v", products.Products)
 	return utils.H{
 		"title": "Hot Sale",
 		"items": products.Products,

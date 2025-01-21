@@ -5,6 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/utils"
+	"github.com/cloudwego/kitex/pkg/klog"
 	category "github.com/xmhu2001/gomall/app/frontend/hertz_gen/frontend/category"
 	"github.com/xmhu2001/gomall/app/frontend/infra/rpc"
 	rpcproduct "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product"
@@ -24,7 +25,7 @@ func (h *CategoryService) Run(req *category.CategoryReq) (resp map[string]any, e
 	if err != nil {
 		return nil, err
 	}
-
+	klog.Infof("products: %v", r.Products)
 	return utils.H{
 		"title": "Category",
 		"items": r.Products,

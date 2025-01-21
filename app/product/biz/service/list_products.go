@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/cloudwego/kitex/pkg/kerrors"
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/xmhu2001/gomall/app/product/biz/dal/mysql"
 	"github.com/xmhu2001/gomall/app/product/biz/model"
 	product "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product"
@@ -18,9 +18,6 @@ func NewListProductsService(ctx context.Context) *ListProductsService {
 
 // Run create note info
 func (s *ListProductsService) Run(req *product.ListProductsReq) (resp *product.ListProductsResp, err error) {
-	if req.CategoryName == "" {
-		return nil, kerrors.NewGRPCBizStatusError(200401, "category name is required")
-	}
 	categoryQuery := model.NewCategoryQuery(s.ctx, mysql.DB)
 
 	list, err := categoryQuery.GetProductsByCatrgoryName(req.CategoryName)
@@ -40,6 +37,7 @@ func (s *ListProductsService) Run(req *product.ListProductsReq) (resp *product.L
 			})
 		}
 	}
+	klog.Infof("products: %v", resp.Products)
 
 	return resp, nil
 }

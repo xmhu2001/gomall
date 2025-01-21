@@ -19,3 +19,8 @@ gen-user:
 gen-product:
 	@cd rpc_gen && cwgo client --type RPC --service product --module github.com/xmhu2001/gomall/rpc_gen -I ..\idl --idl ../idl/product.proto
 	@cd app/product && cwgo server --type RPC --service product --module github.com/xmhu2001/gomall/app/product --pass "-use github.com/xmhu2001/gomall/rpc_gen/kitex_gen" -I ../../idl --idl ../../idl/product.proto
+
+.PHONY: gen-cart
+gen-product:
+	@cd rpc_gen && cwgo client --type RPC --service cart --module github.com/xmhu2001/gomall/rpc_gen -I ..\idl --idl ../idl/cart.proto
+	@cd app/cart && cwgo server --type RPC --service cart --module github.com/xmhu2001/gomall/app/cart --pass "-use github.com/xmhu2001/gomall/rpc_gen/kitex_gen" -I ../../idl --idl ../../idl/cart.proto
