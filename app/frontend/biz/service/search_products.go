@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/common/utils"
@@ -24,6 +25,7 @@ func (h *SearchProductsService) Run(req *product.SearchProductsReq) (resp map[st
 	if err != nil {
 		return nil, err
 	}
+	fmt.Printf("Search results: %v\n", r.Results)
 
 	return utils.H{
 		"items": r.Results,

@@ -2,7 +2,7 @@ package category
 
 import (
 	"context"
-
+	
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 	"github.com/xmhu2001/gomall/app/frontend/biz/service"
@@ -26,6 +26,5 @@ func Category(ctx context.Context, c *app.RequestContext) {
 		utils.SendErrResponse(ctx, c, consts.StatusOK, err)
 		return
 	}
-
-	c.HTML(consts.StatusOK, "category.tmpl", resp)
+	c.HTML(consts.StatusOK, "category", utils.WarpResponse(ctx, c, resp))
 }
