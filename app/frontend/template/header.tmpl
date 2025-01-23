@@ -39,9 +39,9 @@
                    aria-label="Search" value="{{ .q }}">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-          <div class="ms-3">
-            <i class="fa-solid fa-cart-plus fa-xl"></i>
-          </div>
+
+          {{ template "cart-num" . }}
+
           {{if .user_id}}
           <div class="dropdown">
               <div class="ms-3  dropdown-toggle" data-bs-toggle="dropdown">

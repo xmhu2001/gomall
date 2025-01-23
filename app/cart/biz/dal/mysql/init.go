@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/xmhu2001/gomall/app/cart/biz/model"
 	"github.com/xmhu2001/gomall/app/cart/conf"
 
 	"gorm.io/driver/mysql"
@@ -23,6 +24,8 @@ func Init() {
 			SkipDefaultTransaction: true,
 		},
 	)
+	// 自动生成表
+	DB.AutoMigrate(&model.Cart{})
 	if err != nil {
 		panic(err)
 	}

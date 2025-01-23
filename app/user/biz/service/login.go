@@ -23,7 +23,7 @@ func (s *LoginService) Run(req *user.LoginReq) (resp *user.LoginResp, err error)
 	if req.Email == "" || req.Password == "" {
 		return nil, errors.New("email or password is empty")
 	}
-	u, err := model.GetByEmail(mysql.DB, req.Email)
+	u, err := model.GetByEmail(s.ctx, mysql.DB, req.Email)
 	if err != nil {
 		return nil, err
 	}
