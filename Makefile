@@ -21,6 +21,16 @@ gen-product:
 	@cd app/product && cwgo server --type RPC --service product --module github.com/xmhu2001/gomall/app/product --pass "-use github.com/xmhu2001/gomall/rpc_gen/kitex_gen" -I ../../idl --idl ../../idl/product.proto
 
 .PHONY: gen-cart
-gen-product:
+gen-cart:
 	@cd rpc_gen && cwgo client --type RPC --service cart --module github.com/xmhu2001/gomall/rpc_gen -I ..\idl --idl ../idl/cart.proto
 	@cd app/cart && cwgo server --type RPC --service cart --module github.com/xmhu2001/gomall/app/cart --pass "-use github.com/xmhu2001/gomall/rpc_gen/kitex_gen" -I ../../idl --idl ../../idl/cart.proto
+
+.PHONY: gen-payment
+gen-payment:
+	@cd rpc_gen && cwgo client --type RPC --service payment --module github.com/xmhu2001/gomall/rpc_gen -I ..\idl --idl ../idl/payment.proto
+	@cd app/payment && cwgo server --type RPC --service payment --module github.com/xmhu2001/gomall/app/payment --pass "-use github.com/xmhu2001/gomall/rpc_gen/kitex_gen" -I ../../idl --idl ../../idl/payment.proto
+
+.PHONY: gen-checkout
+gen-checkout:
+	@cd rpc_gen && cwgo client --type RPC --service checkout --module github.com/xmhu2001/gomall/rpc_gen -I ..\idl --idl ../idl/checkout.proto
+	@cd app/checkout && cwgo server --type RPC --service checkout --module github.com/xmhu2001/gomall/app/checkout --pass "-use github.com/xmhu2001/gomall/rpc_gen/kitex_gen" -I ../../idl --idl ../../idl/checkout.proto
