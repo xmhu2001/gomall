@@ -8,7 +8,7 @@ gen-demo-thrift:
 
 .PHONY: gen-frontend
 gen-frontend:
-	@cd app/frontend && cwgo server --type HTTP --idl ../../idl/frontend/auth_page.proto --service frontend --module github.com/xmhu2001/gomall/app/frontend -I ..\..\idl
+	@cd app/frontend && cwgo server --type HTTP --idl ../../idl/frontend/checkout_page.proto --service frontend --module github.com/xmhu2001/gomall/app/frontend -I ..\..\idl
 
 .PHONY: gen-user
 gen-user:
