@@ -37,6 +37,7 @@ func (s *ListOrderService) Run(req *order.ListOrderReq) (resp *order.ListOrderRe
 			})
 		}
 		results = append(results, &order.Order{
+			CreatedAt:    int32(v.CreatedAt.Unix()),
 			OrderId:      v.OrderId,
 			UserId:       v.UserId,
 			UserCurrency: v.UserCurrency,
