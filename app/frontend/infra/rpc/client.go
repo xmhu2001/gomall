@@ -9,6 +9,7 @@ import (
 	frontendUtils "github.com/xmhu2001/gomall/app/frontend/utils"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/cart/cartservice"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/checkout/checkoutservice"
+	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/order/orderservice"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product/productcatalogservice"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/user/userservice"
 )
@@ -18,6 +19,7 @@ var (
 	ProductClient  productcatalogservice.Client
 	CartClient     cartservice.Client
 	CheckoutClient checkoutservice.Client
+	OrderClient    orderservice.Client
 	once           sync.Once
 )
 
@@ -27,6 +29,7 @@ func InitClient() {
 		initProductClient()
 		initCartClient()
 		initCheckoutClient()
+		initOrderClient()
 	})
 }
 
@@ -55,5 +58,12 @@ func initCheckoutClient() {
 	r, err := etcd.NewEtcdResolver([]string{conf.GetConf().Hertz.RegistryAddr})
 	frontendUtils.MustHandleError(err)
 	CheckoutClient, err = checkoutservice.NewClient("checkout", client.WithResolver(r))
+	frontendUtils.MustHandleError(err)
+}
+
+func initOrderClient() {
+	r, err := etcd.NewEtcdResolver([]string{conf.GetConf().Hertz.RegistryAddr})
+	frontendUtils.MustHandleError(err)
+	OrderClient, err = orderservice.NewClient("order", client.WithResolver(r))
 	frontendUtils.MustHandleError(err)
 }
