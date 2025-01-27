@@ -5,9 +5,13 @@ import (
 
 	"github.com/cloudwego/kitex/pkg/kerrors"
 	"github.com/cloudwego/kitex/pkg/klog"
+	"github.com/golang/protobuf/proto"
+	"github.com/nats-io/nats.go"
+	"github.com/xmhu2001/gomall/app/checkout/infra/mq"
 	"github.com/xmhu2001/gomall/app/checkout/infra/rpc"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/cart"
 	checkout "github.com/xmhu2001/gomall/rpc_gen/kitex_gen/checkout"
+	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/email"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/order"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/payment"
 	"github.com/xmhu2001/gomall/rpc_gen/kitex_gen/product"
@@ -95,6 +99,18 @@ func (s *CheckoutService) Run(req *checkout.CheckoutReq) (resp *checkout.Checkou
 	if err != nil {
 		return nil, err
 	}
+	// 构造要生产的消息
+	data, _ := proto.Marshal(&email.EmailReq{
+		From:        "from@example.com",
+		To:          req.Email,
+		ContentType: "text/palin",
+		Subject:     "You have just created an order in the Comic Shop",
+		Content:     "You have just created an order in the Comic Shop",
+	})
+	// 构造 nats 的 message
+	msg := &nats.Msg{Subject: "email", Data: data}
+
+	_ = mq.Nc.PublishMsg(msg)
 
 	klog.Info(paymentResult)
 
