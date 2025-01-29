@@ -130,6 +130,8 @@ github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnr
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
 github.com/kisielk/errcheck v1.5.0/go.mod h1:pFxgyoBC7bSaBwPgfKdkLd5X25qrDl4LWUI2bnpBCr8=
 github.com/kisielk/gotool v1.0.0/go.mod h1:XhKaO+MFFWcvkIS/tQcRk01m1F5IRFswLeQ+oQHNcck=
+github.com/kitex-contrib/config-etcd v0.2.0 h1:bM4fCQxZNoj3YARNiyvOiSRk/k5RWm/OcSCi70B8ZDI=
+github.com/kitex-contrib/config-etcd v0.2.0/go.mod h1:Brun1ZoAIJNzhO/cs4ZsJqSdKx0kYxheOnVpUQYO5HA=
 github.com/kitex-contrib/obs-opentelemetry/logging/logrus v0.0.0-20241120035129-55da83caab1b h1:PUdDbnTeBtUOiA+KiEwnECD5qECWvWCD68XTYPIWfEI=
 github.com/kitex-contrib/obs-opentelemetry/logging/logrus v0.0.0-20241120035129-55da83caab1b/go.mod h1:RyQpX16txMOmC2a4yykhF1P50nzbHVnKnI/T0jA1ZOg=
 github.com/kitex-contrib/registry-etcd v0.2.5 h1:16On5GQAmN9tdbFy95QtwGH3aTWnW/BfdvdDmzLIytE=
